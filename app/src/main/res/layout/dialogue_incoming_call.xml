@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    android:padding="@dimen/dimen_20dp"
+    tools:context=".receiver.IncomingCallCovidInfoDialogue">
+    <TextView
+        android:id="@+id/powered_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/app_name"
+        android:textColor="@color/primary"
+        android:textSize="@dimen/text_14sp" />
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/powered_by"
+        android:text="Send availability to "
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/text_14sp" />
+    <TextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:fontFamily="sans-serif"
+        android:layout_below="@+id/subtitle"
+        android:layout_above="@+id/footer"
+        android:background="@color/light_grey_bg"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:text="1. Bed With Oxygen Count - 20\n2. Bed Without Oxygen - 33\n3. Oxygen Cylinder - 400\n4. Ventilator - 13"
+        android:textColor="@color/primary_text"
+        android:textSize="@dimen/smaller_text_size" />
+    <ImageView
+        android:id="@+id/close_button"
+        android:layout_width="@dimen/dimen_26dp"
+        android:layout_height="@dimen/dimen_26dp"
+        android:src="@drawable/ic_baseline_close_24"
+        android:layout_gravity="end"
+        android:background="@drawable/circular_primary_bg"
+        android:padding="@dimen/dimen4dp"
+        android:elevation="@dimen/dimen_4dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-16dp"
+        android:translationZ="1dp"
+        android:layout_alignParentEnd="true" />
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:weightSum="3">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <TextView
+                android:id="@+id/auto_reply_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:fontFamily="sans-serif"
+                android:text="Auto Reply"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/small10_text_size" />
+            <RadioGroup
+                android:id="@+id/auto_reply_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/switch_outline"
+                android:layout_marginTop="@dimen/dimen4dp"
+                android:checkedButton="@+id/disable"
+                android:layout_marginRight="@dimen/activity_horizontal_margin"
+                android:orientation="horizontal"
+                android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+                <RadioButton
+                    android:id="@+id/enable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/switch_on"
+                    android:paddingLeft="@dimen/dimen_12dp"
+                    android:paddingRight="@dimen/dimen_8dp"
+                    android:paddingStart="@dimen/dimen_12dp"
+                    android:paddingEnd="@dimen/dimen_8dp"
+                    android:paddingTop="@dimen/dimen4dp"
+                    android:paddingBottom="@dimen/dimen4dp"
+                    android:button="@null"
+                    android:textSize="@dimen/small10_text_size"
+                    android:gravity="center"
+                    android:tag="@string/enable"
+                    android:text="@string/enable"
+                    android:textColor="@drawable/switch_text"
+                    android:layout_marginLeft="1dp"/>
+
+                <RadioButton
+                    android:id="@+id/disable"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/small10_text_size"
+                    android:paddingLeft="@dimen/dimen_8dp"
+                    android:paddingRight="@dimen/dimen_12dp"
+                    android:paddingStart="@dimen/dimen_8dp"
+                    android:paddingEnd="@dimen/dimen_12dp"
+                    android:background="@drawable/switch_on"
+                    android:paddingTop="@dimen/dimen4dp"
+                    android:paddingBottom="@dimen/dimen4dp"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:tag="@string/disable"
+                    android:text="@string/disable"
+                    android:textColor="@drawable/switch_text"
+                    android:layout_marginRight="1dp" />
+            </RadioGroup>
+        </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/edit_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="Edit Availability"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:backgroundTint="@color/primary_dark"
+            android:textSize="@dimen/small10_text_size"
+            android:theme="@style/AppTheme.Button" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/send_sms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="Sms Status"
+            android:fontFamily="sans-serif-medium"
+            android:textAlignment="center"
+            android:backgroundTint="@color/primary_dark"
+            android:textAllCaps="false"
+            android:textSize="@dimen/small10_text_size"
+            android:theme="@style/AppTheme.Button" />
+
+    </LinearLayout>
+
+</RelativeLayout>
