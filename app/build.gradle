@@ -4,6 +4,13 @@ plugins {
     id 'kotlin-android-extensions'
 }
 
+ext {
+    PROD_SIGNING_KEY_FILE = "./props/keystore.props"
+}
+
+// Signing keystore
+Properties prodKeystoreProps = getProps(ext.PROD_SIGNING_KEY_FILE)
+
 android {
     compileSdkVersion 30
 
@@ -13,10 +20,17 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
     }
-
+    signingConfigs {
+        release {
+            storeFile file(prodKeystoreProps.getProperty("storeFile"))
+            storePassword prodKeystoreProps.getProperty("storePassword")
+            keyAlias prodKeystoreProps.getProperty("keyAlias")
+            keyPassword prodKeystoreProps.getProperty("keyPassword")
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -43,4 +57,13 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     implementation 'com.pixplicity.easyprefs:library:1.9.0'
+//    implementation "com.github.permissions-dispatcher:permissionsdispatcher:4.8.0"
+//    kapt "com.github.permissions-dispatcher:permissionsdispatcher-processor:4.8.0"
+    implementation "com.github.permissions-dispatcher:ktx:1.0.4"
+}
+
+def getProps(path) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(file(path)))
+    return props
 }

@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">India Health Stack</string>
+    <string name="app_name">India Health Stack Provider</string>
     <string name="enable">Enable</string>
     <string name="disable">Disable</string>
+    <string name="allow">Allow</string>
+    <string name="deny">Deny</string>
+    <string name="generic_permission_message">Please grant all the permission</string>
 </resources>
